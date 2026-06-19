@@ -1,0 +1,159 @@
+:root {
+  --ink: #2b2b2b;
+  --paper: #f6f4ef;
+  --muted: #6b6660;
+  --hairline: rgba(43, 43, 43, 0.14);
+  --accent: #a9742c; /* topaz gold, used sparingly */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #ece8e1;
+    --paper: #16151a;
+    --muted: #9a958c;
+    --hairline: rgba(236, 232, 225, 0.16);
+    --accent: #d9b06a;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.hero {
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 1.75rem);
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+}
+
+/* Text wordmark (logo TBD). currentColor follows the theme. */
+.wordmark-text {
+  margin: 0;
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  font-size: clamp(3.5rem, 12vw, 7rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: var(--ink);
+  animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.company {
+  margin: 0;
+  font-size: clamp(0.78rem, 1.6vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-indent: 0.42em;
+  animation: rise 900ms 120ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tagline {
+  margin: 0;
+  max-width: 34ch;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  line-height: 1.5;
+  color: var(--muted);
+  animation: rise 900ms 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tagline::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin: 1.5rem auto 0;
+  background: var(--accent);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+/* Content sections below the hero */
+.content {
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.content section {
+  padding: 2.75rem 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.content h2 {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.content p {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.content p:last-child { margin-bottom: 0; }
+.content p strong { color: var(--ink); font-weight: 600; }
+
+.content .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.content .links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--hairline);
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease;
+}
+
+.content .links a:hover { border-color: var(--accent); }
+
+.footer {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border-top: 1px solid var(--hairline);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordmark-text, .company, .tagline { animation: none; }
+}
