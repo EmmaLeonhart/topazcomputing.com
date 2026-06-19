@@ -46,7 +46,17 @@ body {
   text-align: center;
 }
 
-/* Text wordmark (logo TBD). currentColor follows the theme. */
+/* Faceted topaz gem mark (facets read as vectors converging to the culet). */
+.mark {
+  display: block;
+  width: clamp(76px, 14vw, 108px);
+  height: auto;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 8px 20px rgba(169, 116, 44, 0.38));
+  animation: rise 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* The serif wordmark. */
 .wordmark-text {
   margin: 0;
   font-family: ui-serif, Georgia, "Times New Roman", serif;
@@ -155,5 +165,5 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wordmark-text, .company, .tagline { animation: none; }
+  .mark, .wordmark-text, .company, .tagline { animation: none; }
 }
