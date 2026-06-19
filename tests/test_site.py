@@ -17,7 +17,7 @@ def test_index_has_brand_and_tagline():
     html = read("index.html")
     assert "Topaz" in html
     assert "Topaz&nbsp;Computing" in html or "Topaz Computing" in html
-    assert "analog hardware and edge" in html
+    assert "learns in real time" in html
 
 
 def test_sutra_link_points_to_new_subdomain():
