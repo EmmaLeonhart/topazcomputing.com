@@ -23,3 +23,6 @@ Onboarded with `cleanvibe clone` (cleanvibe v1.13.1). This is an
 the rest of this devlog from `git log`** (tagged releases, milestone
 commits, merged feature branches). After that, every finished queue item
 appends a new dated entry here.
+
+## 2026-06-19
+- Landing page: added a "What we're building" stack section presenting the project family under the Topaz umbrella (Sutra language, Topaz OS [formerly Yantra], self-optimizing pages). Real artifacts only; no em-dashes. Site tests green.
