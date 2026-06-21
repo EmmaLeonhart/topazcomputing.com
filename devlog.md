@@ -26,3 +26,6 @@ appends a new dated entry here.
 
 ## 2026-06-19
 - Landing page: added a "What we're building" stack section presenting the project family under the Topaz umbrella (Sutra language, Topaz OS [formerly Yantra], self-optimizing pages). Real artifacts only; no em-dashes. Site tests green.
+
+## 2026-06-20
+- Added /demo/ : a self-contained, client-side self-optimizing-button demo (no server, no torch) ported from the Sutra trainable-button (exact theta_to_style + BUTTON_AXES; owner-preference + click-through steering). Verified in a browser (state advances, button morphs). Linked from the homepage. This is the production shape: client-side, real-time. Deploys via Pages to topazcomputing.com/demo/.

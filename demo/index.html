@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topaz — a button that optimizes itself</title>
+  <meta name="description" content="A live demo: a call-to-action button that optimizes its own design in real time from owner preference and visitor clicks. Runs entirely in your browser.">
+  <style>
+    :root { --bg:#0e101a; --ink:#f2f4fa; --mute:#9aa3b8; --accent:#5b8cff; --line:#2a2f40; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+           text-align:center; padding:36px 16px 60px; }
+    h1 { font-size:1.6rem; margin:0 0 6px; }
+    p.sub { color:var(--mute); margin:0 auto 26px; max-width:640px; line-height:1.5; }
+    .pair { display:flex; gap:32px; justify-content:center; align-items:flex-start; flex-wrap:wrap; }
+    .cell { display:flex; flex-direction:column; align-items:center; gap:12px; }
+    .stage { display:flex; align-items:center; justify-content:center; width:380px; height:200px;
+             border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+    button.cta { border:none; border-radius:10px; color:#fff; font-weight:700; font-size:18px;
+                 cursor:pointer; box-shadow:0 2px 10px rgba(0,0,0,.45); transition:all .25s ease; }
+    .label { font-size:.8rem; color:var(--mute); text-transform:uppercase; letter-spacing:.08em; }
+    .owner { padding:9px 16px; border-radius:7px; border:1px solid #3a4060;
+             background:#1a1f2e; color:#cdd5e6; cursor:pointer; font-size:.92rem; }
+    .owner:hover { border-color:var(--accent); }
+    #stats { margin:24px auto 0; color:var(--mute); font-variant-numeric:tabular-nums; font-size:.95rem; }
+    .hint { color:#6e7488; font-size:.85rem; max-width:600px; margin:18px auto 0; line-height:1.55; }
+    a { color:var(--accent); text-decoration:none; }
+  </style>
+</head>
+<body>
+  <h1>A button that optimizes itself</h1>
+  <p class="sub">Two versions of a call-to-action button. Tell it which you prefer, and click the ones
+    you'd actually click. It steers its own colour, size, and position in real time toward what the
+    owner wants and what gets clicked. Runs entirely in your browser — no server.</p>
+
+  <div class="pair">
+    <div class="cell">
+      <div class="label">Version A</div>
+      <div class="stage" id="stageA"><button class="cta" id="btnA"></button></div>
+      <button class="owner" onclick="prefer(false)">Owner prefers A</button>
+    </div>
+    <div class="cell">
+      <div class="label">Version B</div>
+      <div class="stage" id="stageB"><button class="cta" id="btnB"></button></div>
+      <button class="owner" onclick="prefer(true)">Owner prefers B</button>
+    </div>
+  </div>
+
+  <div id="stats">loading…</div>
+  <p class="hint">Two channels steer it: the <strong>owner</strong> picks the version they prefer, and
+    <strong>visitors</strong> click the button they'd actually click (clicking a CTA counts as a real
+    click-through). It settles as preferences accumulate. <br>
+    This is the production shape of a Topaz self-optimizing page: client-side, real-time. <a href="/">← Topaz</a></p>
+
+  <script>
+    // --- ported from the Sutra trainable-button demo (button_server.theta_to_style + BUTTON_AXES) ---
+    const AXES = [["cx",0,0.4],["cy",0,0.4],["inv_w",2.1,0.9],["inv_h",4.25,1.75],
+      ["pr",0.9,0.1],["pg",0.9,0.1],["pb",0.9,0.1],["fr",0.5,0.5],["fg",0.5,0.5],["fb",0.5,0.5]];
+    const COPY = ["Buy now","Get started","Learn more"];
+    const CANVAS_PX = 360;
+    const clamp = (x,a,b)=>Math.max(a,Math.min(b,x));
+    const u8 = v=>clamp(Math.round(v*255),0,255);
+    function thetaToStyle(th, copyText){
+      const halfW = 1/Math.max(1e-6, th.inv_w), halfH = 1/Math.max(1e-6, th.inv_h);
+      return {
+        fill:`rgb(${u8(th.fr)},${u8(th.fg)},${u8(th.fb)})`,
+        page:`rgb(${u8(th.pr)},${u8(th.pg)},${u8(th.pb)})`,
+        width_px:Math.round(2*halfW*(CANVAS_PX/2)),
+        height_px:Math.round(2*halfH*(CANVAS_PX/2)),
+        left_px:Math.round(th.cx*(CANVAS_PX/2)),
+        top_px:Math.round(th.cy*(CANVAS_PX/2)),
+        text:copyText
+      };
+    }
+    // --- optimizer (owner preference + click-through), client-side ---
+    let theta = {}; AXES.forEach(([n,c])=>theta[n]=c);
+    let variant = {};
+    let round=0, clicks=0, impressions=0, copyIdx=1;
+    const explore0=0.55, lr0=0.5, anneal=0.03, exploreFloor=0.3, lrFloor=0.6;
+    const decay = ()=>1/(1+anneal*round);
+    const explore = ()=>explore0*Math.max(exploreFloor, decay());
+    const lr = ()=>lr0*Math.max(lrFloor, decay());
+    const bnds = n=>{const a=AXES.find(x=>x[0]===n);return [a[1]-a[2], a[1]+a[2]];};
+    function randn(){ const u=Math.random()||1e-9, v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
+    function proposeVariant(){
+      const v={};
+      AXES.forEach(([n,c,hr])=>{ const[lo,hi]=bnds(n); v[n]=clamp(theta[n]+explore()*hr*randn(), lo, hi); });
+      variant=v; impressions++;   // a fresh pair shown = one impression
+    }
+    function stepToward(target, rate){
+      AXES.forEach(([n])=>{ const[lo,hi]=bnds(n); theta[n]=clamp(theta[n]+rate*(target[n]-theta[n]), lo, hi); });
+    }
+    function applyStyle(stage, btn, s){
+      stage.style.background=s.page; btn.style.background=s.fill;
+      btn.style.width=s.width_px+"px"; btn.style.height=s.height_px+"px";
+      btn.style.transform=`translate(${s.left_px}px,${s.top_px}px)`; btn.textContent=s.text;
+    }
+    function render(){
+      applyStyle(stageA, btnA, thetaToStyle(theta, COPY[copyIdx]));
+      applyStyle(stageB, btnB, thetaToStyle(variant, COPY[copyIdx]));
+      const ctr = impressions ? clicks/impressions : 0;
+      stats.textContent = `round ${round} · clicks ${clicks} / impressions ${impressions} · observed CTR ${ctr.toFixed(3)} · settling ${decay().toFixed(2)}`;
+    }
+    function prefer(variantPreferred){
+      if(variantPreferred) stepToward(variant, lr());   // owner likes B -> move design toward it
+      round++; proposeVariant(); render();              // (preferring A keeps the current design)
+    }
+    function visitorClick(which){
+      clicks++;
+      if(which==="variant") stepToward(variant, 0.25*lr());  // a real click on B is a CTR vote for it
+      render();
+    }
+    document.getElementById("btnA").addEventListener("click", ()=>visitorClick("current"));
+    document.getElementById("btnB").addEventListener("click", ()=>visitorClick("variant"));
+    proposeVariant(); render();
+  </script>
+</body>
+</html>
