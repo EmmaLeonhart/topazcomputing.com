@@ -44,3 +44,22 @@ def test_sitemap_is_wellformed_with_homepage():
 def test_404_links_home():
     html = read("404.html")
     assert "https://topazcomputing.com/" in html
+
+
+def test_story_page_exists_and_branded():
+    html = read("story/index.html")
+    assert "Emma" in html and "Leonhart" in html
+    assert "Founder" in html
+    assert "Sutra" in html
+    # links back to the product home
+    assert 'href="/"' in html
+
+
+def test_homepage_links_to_story():
+    assert 'href="/story/"' in read("index.html")
+
+
+def test_sitemap_includes_story():
+    root = ET.fromstring(read("sitemap.xml"))
+    locs = [e.text for e in root.iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
+    assert "https://topazcomputing.com/story/" in locs
