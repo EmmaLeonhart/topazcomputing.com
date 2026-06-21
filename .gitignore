@@ -25,3 +25,5 @@ Thumbs.db
 # Environment
 .env
 .env.local
+.gstack/
+.pytest_cache/
