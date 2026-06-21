@@ -51,20 +51,19 @@
   <main class="content">
     <section>
       <h2>What we do</h2>
-      <p>Topaz makes <strong>software that learns in real time</strong>. A Topaz program is like an agent, but instead of an outside agent guessing, rewriting, and re-testing it, the program improves itself as it runs, from real signal.</p>
-      <p>It is deep technology underneath and plain to use on top: you point it at a goal and live feedback, and it gets better on its own.</p>
+      <p>Topaz builds <strong>software that improves itself while it runs</strong>. Most programs are frozen the moment they ship — they do exactly what they were written to do until a person rewrites them. A Topaz program treats its own behavior as adjustable and tunes it continuously from live signal, the way a model trains, except it happens in production and on its own.</p>
     </section>
 
     <section>
-      <h2>Why it matters</h2>
-      <p>Adaptive AI is not new. Models that learn and adapt have run in production for years. What is new is the cost: standing one up used to take a specialist team and months.</p>
-      <p>Topaz collapses that to an agent building it in minutes. The depth is real; you do not have to be a researcher to use it.</p>
+      <h2>Why now</h2>
+      <p>Until now, software that adapts meant a research team, a training pipeline, and months of work — so almost nothing you use actually does it. Topaz makes adaptive software something you write in one language and ship, instead of a project only a lab can afford.</p>
+      <p>That is the shift: continuous learning becomes a default property of software, not a specialist feature.</p>
     </section>
 
     <section>
       <h2>The first product</h2>
-      <p>A landing page that optimizes itself, learning in real time from every visitor, instead of waiting for A/B tests a small site can never run.</p>
-      <p>Underneath, it runs on <strong>Sutra</strong>, our language for programs that are continuous and learnable.</p>
+      <p>A landing page that optimizes itself. A/B testing needs roughly 27,000 visitors to call a single winner — traffic most sites never get, so their pages just sit there. A Topaz page learns from the traffic it already has.</p>
+      <p>Here is how. The page is compiled into a differentiable program, so every visual choice — layout, spacing, color, emphasis — is a continuous parameter rather than a fixed value. Visitor behavior (scroll depth, hovers, dwell time) is a dense signal, far richer than convert-or-not, and the page follows it the way a neural network follows a gradient. It does not pick the best of a few human-written variants — it searches a continuous space of designs and settles on ones no one drew by hand.</p>
       <p><a href="/demo/"><strong>See a button optimize itself, live &rarr;</strong></a></p>
       <p class="links">
         <a href="/demo/">Live demo &rarr;</a>
@@ -74,12 +73,12 @@
     </section>
 
     <section>
-      <h2>What we're building</h2>
-      <p>The product sits on a deeper stack. Each layer is a real, working artifact, not a roadmap promise.</p>
+      <h2>The stack underneath</h2>
+      <p>The product runs on a stack we built from the ground up. Each layer is shipped and working today.</p>
       <ul class="stack">
-        <li><strong>Sutra</strong>, our language. Logical operations over vector spaces compile into differentiable tensor graphs, so whole programs are continuous and learnable. Published on PyPI as <code>sutra-dev</code> (v0.7.0), with a NeurIPS 2026 submission.</li>
-        <li><strong>Topaz OS</strong>, a GPU-native neuro-symbolic operating system written in Sutra, where the whole running system is one inspectable network. Working prototype with a terminal, calculator, and click-driven GUI.</li>
-        <li><strong>Self-optimizing pages</strong>, the first product: the stack applied at ground level, where the page itself learns.</li>
+        <li><strong>Sutra</strong>, our language. Logical operations over vector spaces compile at build time into differentiable tensor graphs, so an entire program is one continuous, trainable function. Published on PyPI as <code>sutra-dev</code> (v0.7.0), with a NeurIPS 2026 submission.</li>
+        <li><strong>An operating system written in Sutra</strong>, GPU-native and neuro-symbolic, where the whole running system is a single inspectable network. Working prototype with a terminal, calculator, and click-driven GUI.</li>
+        <li><strong>Self-optimizing pages</strong>, the first product — the same stack at ground level, where the page itself learns from every visitor.</li>
       </ul>
     </section>
   </main>

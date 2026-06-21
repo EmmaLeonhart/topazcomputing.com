@@ -29,3 +29,6 @@ appends a new dated entry here.
 
 ## 2026-06-20
 - Added /demo/ : a self-contained, client-side self-optimizing-button demo (no server, no torch) ported from the Sutra trainable-button (exact theta_to_style + BUTTON_AXES; owner-preference + click-through steering). Verified in a browser (state advances, button morphs). Linked from the homepage. This is the production shape: client-side, real-time. Deploys via Pages to topazcomputing.com/demo/.
+
+## 2026-06-21
+- Landing-page copy rewrite (Emma: "wording too defensive, learning algorithms vague"). Removed the defensive openers ("Adaptive AI is not new", "The depth is real", "not a roadmap promise") and rewrote each section to assert the claim first. Made the learning mechanism concrete in "The first product": page compiled to a differentiable program -> every visual choice is a continuous parameter -> dense behavioral signal (scroll/hover/dwell) -> follows the gradient like a neural net -> searches a continuous design space rather than picking among human variants. Renamed "Why it matters"->"Why now" and "What we're building"->"The stack underneath". Aligned the OS line to the unbranded investor framing ("an operating system written in Sutra", dropped the "Topaz OS" product name). Tests green (7 passed).
