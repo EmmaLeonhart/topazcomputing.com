@@ -35,3 +35,6 @@ appends a new dated entry here.
 
 ## 2026-06-21
 - Added /story/ — a founder-story page (story/index.html) for Emma Leonhart, reusing the site chrome + styles. Branding-forward and confident: self-taught deep-tech founder, shipped a language + paper + OS prototype solo, "crystal not cloud", networked in via Google Scholar + Discord + cold outreach. Real facts only. NO deadname, NO trans/identity content (Emma: identity is irrelevant, the work is what matters). Wired into deploy.yml (assemble copies story/ into _site), sitemap.xml (+ /story/ and /demo/), and a homepage "Who's building it" link. Added 3 smoke tests. Tests green (10 passed).
+
+## 2026-06-22
+- Fixed the Discord/Slack/iMessage link preview for topazcomputing.com. The homepage had og:title/description/url but NO og:image, no twitter card, and no theme-color, so embeds rendered bare. Added og:image (absolute https URL to logo-social.png, 1200x1200), og:image:width/height/alt, og:site_name, twitter:card=summary_large_image + twitter:image, and theme-color #a9742c (the topaz gold that colors Discord's embed accent bar). Same preview block added to /story/. CRITICAL FIX: deploy.yml wasn't copying logo-social.png into _site at all, so the og:image would have 404'd; added `cp logo-social.png logo.png _site/`. Added smoke tests asserting the preview tags + that the image is actually published.

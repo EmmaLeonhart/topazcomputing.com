@@ -25,6 +25,7 @@ jobs:
           mkdir -p _site _site/assets _site/demo _site/story
           cp index.html 404.html styles.css CNAME _site/
           cp robots.txt sitemap.xml _site/
+          cp logo-social.png logo.png _site/
           cp -r assets/. _site/assets/
           cp demo/index.html _site/demo/
           cp story/index.html _site/story/

@@ -63,3 +63,20 @@ def test_sitemap_includes_story():
     root = ET.fromstring(read("sitemap.xml"))
     locs = [e.text for e in root.iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
     assert "https://topazcomputing.com/story/" in locs
+
+
+def test_link_preview_tags_present():
+    # Discord/Slack/iMessage previews need an absolute og:image + twitter card.
+    for page in ("index.html", "story/index.html"):
+        html = read(page)
+        assert 'property="og:image"' in html, f"{page} missing og:image"
+        assert "https://topazcomputing.com/logo-social.png" in html, f"{page} og:image not absolute"
+        assert 'name="twitter:card"' in html, f"{page} missing twitter:card"
+        assert 'name="theme-color"' in html, f"{page} missing theme-color"
+
+
+def test_social_image_is_published():
+    # The og:image file must exist AND be copied into the deployed _site.
+    assert (ROOT / "logo-social.png").exists(), "logo-social.png missing from repo"
+    deploy = (ROOT / ".github/workflows/deploy.yml").read_text(encoding="utf-8")
+    assert "logo-social.png" in deploy, "deploy.yml does not publish logo-social.png"
