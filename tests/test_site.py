@@ -80,3 +80,15 @@ def test_social_image_is_published():
     assert (ROOT / "logo-social.png").exists(), "logo-social.png missing from repo"
     deploy = (ROOT / ".github/workflows/deploy.yml").read_text(encoding="utf-8")
     assert "logo-social.png" in deploy, "deploy.yml does not publish logo-social.png"
+
+
+def test_waitlist_signup_form_present():
+    """The mailing-list signup must stay on the page (it went missing once; this
+    guards it). It posts to the existing Google Form so sign-ups stay continuous."""
+    html = read("index.html")
+    assert 'id="waitlist"' in html, "waitlist section missing"
+    # The live Google Form endpoint + email entry field — the original list.
+    assert "1FAIpQLSe7ZXwFpOAVADmKkmOvcVsFAv1qhdJb_pwMP2c3mNMTvifdHw" in html, \
+        "Google Form action missing — signups would not be collected"
+    assert 'name="entry.900213640"' in html, "email field missing"
+    assert 'type="email"' in html and "required" in html

@@ -101,6 +101,25 @@
       <p>Topaz is built by <strong>Emma Leonhart</strong>, a self-taught deep-tech founder who shipped the language, the research paper, and the OS prototype solo, without waiting for permission.</p>
       <p class="links"><a href="/story/">Read the founder story &rarr;</a></p>
     </section>
+
+    <section id="waitlist">
+      <h2>Request early access</h2>
+      <p>Topaz is rolling out to early users in waves. Join the list to be in the first &mdash; and to follow the self-optimizing pages product as it ships.</p>
+      <!-- Posts into the existing Google Form (responses collect in the linked Sheet) —
+           the same list people already signed up to on the original Yantra site, so
+           sign-ups stay continuous. Form ID 1FAIpQLSe7ZXwFpOAVADmKkmOvcVsFAv1qhdJb_pwMP2c3mNMTvifdHw;
+           email field entry.900213640. The hidden iframe target keeps the visitor on
+           this page instead of redirecting to Google's confirmation. -->
+      <form class="waitlist" target="topaz-waitlist-sink" method="POST"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSe7ZXwFpOAVADmKkmOvcVsFAv1qhdJb_pwMP2c3mNMTvifdHw/formResponse"
+            onsubmit="this.style.display='none';document.getElementById('waitlist-thanks').style.display='block';">
+        <input type="email" name="entry.900213640" placeholder="you@company.com" required aria-label="Your email address">
+        <button class="btn-primary" type="submit">Join the list</button>
+      </form>
+      <iframe name="topaz-waitlist-sink" title="waitlist form target" style="display:none" aria-hidden="true"></iframe>
+      <p id="waitlist-thanks" class="waitlist-note" style="display:none">Thanks &mdash; you&rsquo;re on the list. We&rsquo;ll reach out as the prototype rolls out in waves.</p>
+      <p class="waitlist-note">Rolled out in waves. No spam, no list-selling.</p>
+    </section>
   </main>
 
   <footer class="footer">

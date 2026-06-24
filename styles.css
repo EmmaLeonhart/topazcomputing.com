@@ -150,6 +150,49 @@ body {
 
 .content .links a:hover { border-color: var(--accent); }
 
+/* Waitlist — email capture, posts to the existing Google Form (the original list) */
+.waitlist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin: 0.5rem 0 0;
+  max-width: 35rem;
+}
+.waitlist input[type=email] {
+  flex: 1;
+  min-width: 14rem;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--hairline);
+  background: var(--paper);
+  color: var(--ink);
+  transition: border-color 0.2s ease;
+}
+.waitlist input[type=email]::placeholder { color: var(--muted); }
+.waitlist input[type=email]:focus { outline: none; border-color: var(--accent); }
+.waitlist .btn-primary {
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--paper);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.waitlist .btn-primary:hover { opacity: 0.88; }
+.waitlist-note {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0.75rem 0 0;
+  max-width: 35rem;
+}
+
 .footer {
   padding: 1.5rem;
   text-align: center;
