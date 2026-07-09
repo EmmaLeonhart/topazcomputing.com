@@ -1,5 +1,15 @@
 # topazcomputing.com — Devlog
 
+## 2026-07-09
+
+- **Fixed the deploy workflow to actually publish `/materials/`.** The prior
+  commit added the deck PDF to the repo but the live URL 404'd: `deploy.yml`
+  assembles `_site` from an explicit file allowlist and did not copy
+  `materials/`, so the file was in the repo but never in the deployed artifact
+  (caught by a live-fetch check, not assumed). Added
+  `mkdir -p … _site/materials` + `cp -r materials/. _site/materials/` to the
+  assemble step. After this deploy the deck URL resolves.
+
 ## 2026-07-08
 
 - **Hosted the Topaz investor pitch deck (PDF) unlisted at `/materials/topaz-pitch-deck.pdf`.**
