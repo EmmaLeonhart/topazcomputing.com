@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /materials/
 
 Sitemap: https://topazcomputing.com/sitemap.xml

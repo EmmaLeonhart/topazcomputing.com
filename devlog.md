@@ -1,5 +1,17 @@
 # topazcomputing.com — Devlog
 
+## 2026-07-08
+
+- **Hosted the Topaz investor pitch deck (PDF) unlisted at `/materials/topaz-pitch-deck.pdf`.**
+  Added for the CDL application's optional deck-link field (Emma's pick: unlisted
+  PDF on the site rather than Google Drive). The deck was rebuilt fresh in the
+  funding-and-networking repo (trajectory framing: websites → edge/autonomous;
+  sutra-dev v0.9.4; funnel-maker ICP; $57M–$120M/yr serviceable market range),
+  then exported to PDF and dropped here. `robots.txt` gets `Disallow: /materials/`
+  so the path is public-if-you-have-the-URL but not crawled/indexed — the
+  "unlisted" property. Not linked from any page. Link for the application:
+  https://topazcomputing.com/materials/topaz-pitch-deck.pdf
+
 **This file is where "done" lives.** `queue.md` is delete-only: when a queue
 item is finished, the item is **deleted from `queue.md`** and a dated entry
 is **appended here**, in the same commit as the work, then pushed. Never
