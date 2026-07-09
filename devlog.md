@@ -2,6 +2,9 @@
 
 ## 2026-07-09
 
+- **Refreshed the hosted pitch deck PDF** — Ask slide now states the real round
+  (raising ~$250K on an uncapped SAFE; YC + investors + cyber.fund tracks),
+  replacing the [PENDING-EMMA] placeholder. Same unlisted URL.
 - **Fixed the deploy workflow to actually publish `/materials/`.** The prior
   commit added the deck PDF to the repo but the live URL 404'd: `deploy.yml`
   assembles `_site` from an explicit file allowlist and did not copy
