@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Topaz Computing</title>
-  <meta name="description" content="Topaz Computing: software that learns in real time." />
+  <meta name="description" content="Topaz Computing: AI employees you manage like a game. A command center for a swarm of agents working for you 24/7." />
 
   <!-- Open Graph (Discord / Slack / iMessage link previews) -->
   <meta property="og:site_name" content="Topaz Computing" />
   <meta property="og:title" content="Topaz Computing" />
-  <meta property="og:description" content="Software that learns in real time." />
+  <meta property="og:description" content="AI employees you manage like a game." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://topazcomputing.com/" />
   <meta property="og:image" content="https://topazcomputing.com/logo-social.png" />
@@ -20,7 +20,7 @@
   <!-- Twitter card (used by several embedders too) -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Topaz Computing" />
-  <meta name="twitter:description" content="Software that learns in real time." />
+  <meta name="twitter:description" content="AI employees you manage like a game." />
   <meta name="twitter:image" content="https://topazcomputing.com/logo-social.png" />
 
   <!-- Topaz gold: colors the Discord embed accent bar -->
@@ -59,52 +59,40 @@
     </svg>
     <h1 class="wordmark-text">Topaz</h1>
     <p class="company">Topaz&nbsp;Computing</p>
-    <p class="tagline">Software that learns in real&nbsp;time.</p>
+    <p class="tagline">AI employees you manage like a&nbsp;game.</p>
   </header>
 
   <main class="content">
     <section>
-      <h2>What we do</h2>
-      <p>Topaz builds <strong>software that improves itself while it runs</strong>. Most programs are frozen the moment they ship — they do exactly what they were written to do until a person rewrites them. A Topaz program treats its own behavior as adjustable and tunes it continuously from live signal, the way a model trains, except it happens in production and on its own.</p>
+      <h2>What it is</h2>
+      <p>Imagine Persona &mdash; except you&rsquo;re running a real business. Topaz is a <strong>command center for a swarm of AI employees</strong>, each working for you 24/7 in its own cloud container. The game is managing them: building the instructions they follow, reviewing what they bring back, and steering the long-term plan.</p>
     </section>
 
     <section>
-      <h2>Why now</h2>
-      <p>Until now, software that adapts meant a research team, a training pipeline, and months of work — so almost nothing you use actually does it. Topaz makes adaptive software something you write in one language and ship, instead of a project only a lab can afford.</p>
-      <p>That is the shift: continuous learning becomes a default property of software, not a specialist feature.</p>
+      <h2>Why a game</h2>
+      <p>Today you talk to AI agents through chat windows, and it is the worst part of using them. Agents lose the plot on long-horizon work &mdash; not because they can&rsquo;t think, but because <strong>context is the bottleneck</strong>, and a chat log is where context goes to die.</p>
+      <p>Good games solved this problem years ago. They keep you oriented inside plans that span dozens of hours, and they make following those plans genuinely addictive. Topaz&rsquo;s interface does for your business what a great game does for a campaign: <strong>the UI&rsquo;s whole job is context management</strong> &mdash; long-term planning, made legible and compulsive.</p>
     </section>
 
     <section>
-      <h2>The first product</h2>
-      <p>A landing page that optimizes itself. A/B testing needs roughly 27,000 visitors to call a single winner — traffic most sites never get, so their pages just sit there. A Topaz page learns from the traffic it already has.</p>
-      <p>Here is how. The page is compiled into a differentiable program, so every visual choice — layout, spacing, color, emphasis — is a continuous parameter rather than a fixed value. Visitor behavior (scroll depth, hovers, dwell time) is a dense signal, far richer than convert-or-not, and the page follows it the way a neural network follows a gradient. It does not pick the best of a few human-written variants — it searches a continuous space of designs and settles on ones no one drew by hand.</p>
-      <p><a href="/demo/"><strong>See a button optimize itself, live &rarr;</strong></a></p>
+      <h2>How it works</h2>
+      <p>Your operation lives on a live board &mdash; queued, in&nbsp;progress, done &mdash; over plain files that you and your agents both read and write. No proprietary black box holding your task state hostage: every plan, every queue, every decision trail is yours, in text, forever.</p>
+      <p>Agents pick up work from the queue, push results back, and the board moves in real time. You review, redirect, and approve &mdash; humans judge plans; agents execute them. Hard spending caps and human approval gates are built into the design from day one.</p>
+      <p>Topaz is agent-agnostic: it orchestrates the agent harnesses you already use, and the ones that come next.</p>
+    </section>
+
+    <section>
+      <h2>Built on itself</h2>
+      <p>Topaz is being built <em>by</em> the system it sells &mdash; a fleet of agents working from the same queues, boards, and rails that ship in the product. We are our own first customer, every single night.</p>
       <p class="links">
-        <a href="/demo/">Live demo &rarr;</a>
-        <a href="https://sutra.topazcomputing.com">Explore Sutra &rarr;</a>
+        <a href="/story/">Read the founder story &rarr;</a>
         <a href="https://github.com/EmmaLeonhart/topazcomputing.com">GitHub &rarr;</a>
       </p>
     </section>
 
-    <section>
-      <h2>The stack underneath</h2>
-      <p>The product runs on a stack we built from the ground up. Each layer is shipped and working today.</p>
-      <ul class="stack">
-        <li><strong>Sutra</strong>, our language. Logical operations over vector spaces compile at build time into differentiable tensor graphs, so an entire program is one continuous, trainable function. Published on PyPI as <code>sutra-dev</code> (v1.1.0), with a NeurIPS 2026 submission.</li>
-        <li><strong>An operating system written in Sutra</strong>, GPU-native and neuro-symbolic, where the whole running system is a single inspectable network. Working prototype with a terminal, calculator, and click-driven GUI.</li>
-        <li><strong>Self-optimizing pages</strong>, the first product — the same stack at ground level, where the page itself learns from every visitor.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Who's building it</h2>
-      <p>Topaz is built by <strong>Emma Leonhart</strong>, a self-taught deep-tech founder who shipped the language, the research paper, and the OS prototype solo, without waiting for permission.</p>
-      <p class="links"><a href="/story/">Read the founder story &rarr;</a></p>
-    </section>
-
     <section id="waitlist">
       <h2>Request early access</h2>
-      <p>Topaz is rolling out to early users in waves. Join the list to be in the first &mdash; and to follow the self-optimizing pages product as it ships.</p>
+      <p>Topaz is rolling out to early users in waves. Join the list to be among the first.</p>
       <!-- Posts into the existing Google Form (responses collect in the linked Sheet) —
            the same list people already signed up to on the original Yantra site, so
            sign-ups stay continuous. Form ID 1FAIpQLSe7ZXwFpOAVADmKkmOvcVsFAv1qhdJb_pwMP2c3mNMTvifdHw;
@@ -117,8 +105,16 @@
         <button class="btn-primary" type="submit">Join the list</button>
       </form>
       <iframe name="topaz-waitlist-sink" title="waitlist form target" style="display:none" aria-hidden="true"></iframe>
-      <p id="waitlist-thanks" class="waitlist-note" style="display:none">Thanks &mdash; you&rsquo;re on the list. We&rsquo;ll reach out as the prototype rolls out in waves.</p>
+      <p id="waitlist-thanks" class="waitlist-note" style="display:none">Thanks &mdash; you&rsquo;re on the list. We&rsquo;ll reach out as early access rolls out in waves.</p>
       <p class="waitlist-note">Rolled out in waves. No spam, no list-selling.</p>
+    </section>
+
+    <section>
+      <h2>Also from Topaz</h2>
+      <p class="links">
+        <a href="/funnel/">Self-optimizing landing pages &rarr;</a>
+        <a href="https://sutra.topazcomputing.com">Sutra, our differentiable language &rarr;</a>
+      </p>
     </section>
   </main>
 

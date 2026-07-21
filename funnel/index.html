@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Self-Optimizing Pages — Topaz Computing</title>
+  <meta name="description" content="Topaz Computing: software that learns in real time." />
+
+  <!-- Open Graph (Discord / Slack / iMessage link previews) -->
+  <meta property="og:site_name" content="Topaz Computing" />
+  <meta property="og:title" content="Topaz Computing" />
+  <meta property="og:description" content="Software that learns in real time." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://topazcomputing.com/funnel/" />
+  <meta property="og:image" content="https://topazcomputing.com/logo-social.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="Topaz Computing" />
+
+  <!-- Twitter card (used by several embedders too) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Topaz Computing" />
+  <meta name="twitter:description" content="Software that learns in real time." />
+  <meta name="twitter:image" content="https://topazcomputing.com/logo-social.png" />
+
+  <!-- Topaz gold: colors the Discord embed accent bar -->
+  <meta name="theme-color" content="#a9742c" />
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <svg class="mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Topaz gemstone">
+      <title>Topaz</title>
+      <defs>
+        <linearGradient id="topaz-g" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fbe6b0" />
+          <stop offset="0.45" stop-color="#e6b85e" />
+          <stop offset="1" stop-color="#a9742c" />
+        </linearGradient>
+      </defs>
+      <path d="M42 26 L78 26 L94 46 L60 102 L26 46 Z" fill="url(#topaz-g)" stroke="#7a5210" stroke-width="2.2" stroke-linejoin="round" />
+      <path d="M42 26 L60 26 L60 46 Z" fill="#fdeecb" fill-opacity="0.55" />
+      <path d="M26 46 L60 46 L60 102 Z" fill="#ffffff" fill-opacity="0.10" />
+      <g fill="none" stroke="#7a5210" stroke-width="1.4" stroke-linejoin="round" stroke-opacity="0.85">
+        <path d="M26 46 L94 46" />
+        <path d="M60 26 L60 102" />
+        <path d="M42 26 L60 102" />
+        <path d="M78 26 L60 102" />
+        <path d="M26 46 L60 102" />
+        <path d="M94 46 L60 102" />
+        <path d="M42 26 L26 46" />
+        <path d="M78 26 L94 46" />
+        <path d="M42 26 L60 46" />
+        <path d="M78 26 L60 46" />
+      </g>
+    </svg>
+    <h1 class="wordmark-text">Topaz</h1>
+    <p class="company">Topaz&nbsp;Computing</p>
+    <p class="tagline">Software that learns in real&nbsp;time.</p>
+    <p class="links"><a href="/">&larr; Topaz Computing home</a></p>
+  </header>
+
+  <main class="content">
+    <section>
+      <h2>What we do</h2>
+      <p>Topaz builds <strong>software that improves itself while it runs</strong>. Most programs are frozen the moment they ship — they do exactly what they were written to do until a person rewrites them. A Topaz program treats its own behavior as adjustable and tunes it continuously from live signal, the way a model trains, except it happens in production and on its own.</p>
+    </section>
+
+    <section>
+      <h2>Why now</h2>
+      <p>Until now, software that adapts meant a research team, a training pipeline, and months of work — so almost nothing you use actually does it. Topaz makes adaptive software something you write in one language and ship, instead of a project only a lab can afford.</p>
+      <p>That is the shift: continuous learning becomes a default property of software, not a specialist feature.</p>
+    </section>
+
+    <section>
+      <h2>The first product</h2>
+      <p>A landing page that optimizes itself. A/B testing needs roughly 27,000 visitors to call a single winner — traffic most sites never get, so their pages just sit there. A Topaz page learns from the traffic it already has.</p>
+      <p>Here is how. The page is compiled into a differentiable program, so every visual choice — layout, spacing, color, emphasis — is a continuous parameter rather than a fixed value. Visitor behavior (scroll depth, hovers, dwell time) is a dense signal, far richer than convert-or-not, and the page follows it the way a neural network follows a gradient. It does not pick the best of a few human-written variants — it searches a continuous space of designs and settles on ones no one drew by hand.</p>
+      <p><a href="/demo/"><strong>See a button optimize itself, live &rarr;</strong></a></p>
+      <p class="links">
+        <a href="/demo/">Live demo &rarr;</a>
+        <a href="https://sutra.topazcomputing.com">Explore Sutra &rarr;</a>
+        <a href="https://github.com/EmmaLeonhart/topazcomputing.com">GitHub &rarr;</a>
+      </p>
+    </section>
+
+    <section>
+      <h2>The stack underneath</h2>
+      <p>The product runs on a stack we built from the ground up. Each layer is shipped and working today.</p>
+      <ul class="stack">
+        <li><strong>Sutra</strong>, our language. Logical operations over vector spaces compile at build time into differentiable tensor graphs, so an entire program is one continuous, trainable function. Published on PyPI as <code>sutra-dev</code> (v1.1.0), with a NeurIPS 2026 submission.</li>
+        <li><strong>An operating system written in Sutra</strong>, GPU-native and neuro-symbolic, where the whole running system is a single inspectable network. Working prototype with a terminal, calculator, and click-driven GUI.</li>
+        <li><strong>Self-optimizing pages</strong>, the first product — the same stack at ground level, where the page itself learns from every visitor.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Who's building it</h2>
+      <p>Topaz is built by <strong>Emma Leonhart</strong>, a self-taught deep-tech founder who shipped the language, the research paper, and the OS prototype solo, without waiting for permission.</p>
+      <p class="links"><a href="/story/">Read the founder story &rarr;</a></p>
+    </section>
+
+    <section id="waitlist">
+      <h2>Request early access</h2>
+      <p>Topaz is rolling out to early users in waves. Join the list to be in the first &mdash; and to follow the self-optimizing pages product as it ships.</p>
+      <!-- Posts into the existing Google Form (responses collect in the linked Sheet) —
+           the same list people already signed up to on the original Yantra site, so
+           sign-ups stay continuous. Form ID 1FAIpQLSe7ZXwFpOAVADmKkmOvcVsFAv1qhdJb_pwMP2c3mNMTvifdHw;
+           email field entry.900213640. The hidden iframe target keeps the visitor on
+           this page instead of redirecting to Google's confirmation. -->
+      <form class="waitlist" target="topaz-waitlist-sink" method="POST"
+            action="https://docs.google.com/forms/d/e/1FAIpQLSe7ZXwFpOAVADmKkmOvcVsFAv1qhdJb_pwMP2c3mNMTvifdHw/formResponse"
+            onsubmit="this.style.display='none';document.getElementById('waitlist-thanks').style.display='block';">
+        <input type="email" name="entry.900213640" placeholder="you@company.com" required aria-label="Your email address">
+        <button class="btn-primary" type="submit">Join the list</button>
+      </form>
+      <iframe name="topaz-waitlist-sink" title="waitlist form target" style="display:none" aria-hidden="true"></iframe>
+      <p id="waitlist-thanks" class="waitlist-note" style="display:none">Thanks &mdash; you&rsquo;re on the list. We&rsquo;ll reach out as the prototype rolls out in waves.</p>
+      <p class="waitlist-note">Rolled out in waves. No spam, no list-selling.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>&copy; <span id="year">2026</span> Topaz Computing</span>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

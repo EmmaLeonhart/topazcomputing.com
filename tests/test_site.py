@@ -13,21 +13,36 @@ def test_cname_is_topazcomputing():
     assert read("CNAME").strip() == "topazcomputing.com"
 
 
-def test_index_has_brand_and_tagline():
+def test_index_has_brand_and_agentic_tagline():
+    # Root pivoted 2026-07-21: the agentic product leads; the differentiable
+    # pitch moved to /funnel (test below).
     html = read("index.html")
     assert "Topaz" in html
     assert "Topaz&nbsp;Computing" in html or "Topaz Computing" in html
+    assert "AI employees" in html
+    assert "context management" in html
+
+
+def test_funnel_carries_differentiable_pitch():
+    html = read("funnel/index.html")
     assert "learns in real time" in html
+    assert 'href="/styles.css"' in html and 'href="/assets/favicon.svg"' in html
+    assert 'href="/"' in html  # way back home
+
+
+def test_homepage_links_to_funnel():
+    assert 'href="/funnel/"' in read("index.html")
 
 
 def test_sutra_link_points_to_new_subdomain():
-    html = read("index.html")
-    assert "https://sutra.topazcomputing.com" in html
-    assert "sutra.noldor.tech" not in html
+    for page in ("index.html", "funnel/index.html"):
+        html = read(page)
+        assert "https://sutra.topazcomputing.com" in html
+        assert "sutra.noldor.tech" not in html
 
 
 def test_no_noldor_mention_in_shipped_files():
-    for name in ("index.html", "404.html", "styles.css", "robots.txt", "sitemap.xml"):
+    for name in ("index.html", "funnel/index.html", "404.html", "styles.css", "robots.txt", "sitemap.xml"):
         assert "noldor" not in read(name).lower(), f"'noldor' leaked into {name}"
 
 
@@ -59,10 +74,16 @@ def test_homepage_links_to_story():
     assert 'href="/story/"' in read("index.html")
 
 
-def test_sitemap_includes_story():
+def test_sitemap_includes_story_and_funnel():
     root = ET.fromstring(read("sitemap.xml"))
     locs = [e.text for e in root.iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
     assert "https://topazcomputing.com/story/" in locs
+    assert "https://topazcomputing.com/funnel/" in locs
+
+
+def test_deploy_publishes_funnel():
+    deploy = (ROOT / ".github/workflows/deploy.yml").read_text(encoding="utf-8")
+    assert "funnel/index.html" in deploy, "deploy.yml does not publish /funnel"
 
 
 def test_link_preview_tags_present():
