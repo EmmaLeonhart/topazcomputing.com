@@ -20,9 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # NOTE: this is an explicit allowlist. A new page directory is NOT published until
+      # it is added here — the deploy still reports success while silently omitting it.
       - name: Assemble site
         run: |
-          mkdir -p _site _site/assets _site/demo _site/story _site/materials _site/funnel
+          mkdir -p _site _site/assets _site/demo _site/story _site/materials _site/funnel _site/querykey
           cp index.html 404.html styles.css CNAME _site/
           cp robots.txt sitemap.xml _site/
           cp logo-social.png logo.png _site/
@@ -30,6 +32,7 @@ jobs:
           cp demo/index.html _site/demo/
           cp story/index.html _site/story/
           cp funnel/index.html _site/funnel/
+          cp querykey/index.html _site/querykey/
           cp -r materials/. _site/materials/
       - uses: actions/configure-pages@v5
         with:
