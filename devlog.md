@@ -69,3 +69,4 @@ appends a new dated entry here.
 
 ## 2026-10-29
 - Added /founders/emma/, a factual founder profile for Emma Leonhart with ProfilePage + Person JSON-LD. The Person uses the same @id as emmaleonhart.com (https://emmaleonhart.com/#person) and the same 13 sameAs profiles Emma confirmed, so Google sees one entity across both sites (Knowledge Graph work). Linked from the homepage and /story/, added to the deploy.yml allowlist and sitemap.xml. Two smoke tests added. Tests green (18 passed).
+- Added Organization JSON-LD to the homepage (Topaz Computing, Vancouver, founder Emma Leonhart via the shared Person @id). A second founder, Arcos, is to be added once Emma gives the details. Smoke test added. Tests green.

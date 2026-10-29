@@ -29,6 +29,31 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 
   <link rel="stylesheet" href="styles.css" />
+  <!-- Entity data for search engines. The founder @id is the Person on
+       emmaleonhart.com and /founders/emma/, so all three describe one entity. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://topazcomputing.com/#organization",
+    "name": "Topaz Computing",
+    "url": "https://topazcomputing.com/",
+    "logo": "https://topazcomputing.com/logo.png",
+    "description": "AI employees you manage like a game: a command center for a swarm of agents working for you 24/7.",
+    "location": {
+      "@type": "Place",
+      "name": "Vancouver, British Columbia, Canada"
+    },
+    "founder": [
+      {
+        "@type": "Person",
+        "@id": "https://emmaleonhart.com/#person",
+        "name": "Emma Leonhart",
+        "url": "https://topazcomputing.com/founders/emma/"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header class="hero">

@@ -133,3 +133,12 @@ def test_founder_emma_page_is_linked_published_and_in_sitemap():
     root = ET.fromstring(read("sitemap.xml"))
     locs = [e.text for e in root.iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
     assert "https://topazcomputing.com/founders/emma/" in locs
+
+
+def test_homepage_has_organization_with_founder():
+    import json, re
+    html = read("index.html")
+    m = re.search(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
+    data = json.loads(m.group(1))
+    assert data["@type"] == "Organization" and data["name"] == "Topaz Computing"
+    assert "https://emmaleonhart.com/#person" in [f["@id"] for f in data["founder"]]
