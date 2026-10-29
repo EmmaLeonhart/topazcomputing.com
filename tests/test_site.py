@@ -142,3 +142,16 @@ def test_homepage_has_organization_with_founder():
     data = json.loads(m.group(1))
     assert data["@type"] == "Organization" and data["name"] == "Topaz Computing"
     assert "https://emmaleonhart.com/#person" in [f["@id"] for f in data["founder"]]
+
+
+def test_founder_arcos_page_published_and_in_org():
+    import json, re
+    html = read("founders/arcos/index.html")
+    m = re.search(r'<script type="application/ld[+]json">(.*?)</script>', html, re.S)
+    person = json.loads(m.group(1))["mainEntity"]
+    assert person["name"] == "Arkhos Winter" and person["alternateName"] == "Arcos"
+    assert "cp founders/arcos/index.html _site/founders/arcos/" in read(".github/workflows/deploy.yml")
+    assert 'href="/founders/arcos/"' in read("index.html")
+    m = re.search(r'<script type="application/ld[+]json">(.*?)</script>', read("index.html"), re.S)
+    names = [f["name"] for f in json.loads(m.group(1))["founder"]]
+    assert names == ["Emma Leonhart", "Arkhos Winter"]
