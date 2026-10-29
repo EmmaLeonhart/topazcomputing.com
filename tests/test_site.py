@@ -155,3 +155,14 @@ def test_founder_arcos_page_published_and_in_org():
     m = re.search(r'<script type="application/ld[+]json">(.*?)</script>', read("index.html"), re.S)
     names = [f["name"] for f in json.loads(m.group(1))["founder"]]
     assert names == ["Emma Leonhart", "Arkhos Winter"]
+
+
+def test_homepage_links_linkedin_company_and_both_founders():
+    import json, re
+    html = read("index.html")
+    m = re.search(r'<script type="application/ld[+]json">(.*?)</script>', html, re.S)
+    org = json.loads(m.group(1))
+    assert "https://www.linkedin.com/company/topaz-ai/" in org["sameAs"]
+    footer = html[html.index('<footer'):]
+    for href in ("https://www.linkedin.com/company/topaz-ai/", "/founders/emma/", "/founders/arcos/"):
+        assert f'href="{href}"' in footer
