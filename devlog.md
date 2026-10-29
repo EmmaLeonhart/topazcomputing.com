@@ -66,3 +66,6 @@ appends a new dated entry here.
 
 ## 2026-06-23
 - Restored the mailing-list signup, which never made it onto topazcomputing.com (it was on the original Yantra site and got dropped). Added a "Request early access" section (`index.html`, `#waitlist`) that posts to the SAME Google Form the original list used (form 1FAIpQLSe7ZXwFpOAVADmKkmOvcVsFAv1qhdJb_pwMP2c3mNMTvifdHw, email field entry.900213640), so existing sign-ups stay continuous and new ones land in the same Sheet. Hidden-iframe target keeps the visitor on the page; inline "thanks" message on submit. Styled to the Topaz palette (cream/ink, topaz-gold button) in `styles.css`. Added a smoke test asserting the form + Google Form action + email field are present, so it can't silently disappear again. Tests green (13 passed).
+
+## 2026-10-29
+- Added /founders/emma/, a factual founder profile for Emma Leonhart with ProfilePage + Person JSON-LD. The Person uses the same @id as emmaleonhart.com (https://emmaleonhart.com/#person) and the same 13 sameAs profiles Emma confirmed, so Google sees one entity across both sites (Knowledge Graph work). Linked from the homepage and /story/, added to the deploy.yml allowlist and sitemap.xml. Two smoke tests added. Tests green (18 passed).

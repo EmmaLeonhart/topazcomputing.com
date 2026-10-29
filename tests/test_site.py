@@ -113,3 +113,23 @@ def test_waitlist_signup_form_present():
         "Google Form action missing — signups would not be collected"
     assert 'name="entry.900213640"' in html, "email field missing"
     assert 'type="email"' in html and "required" in html
+
+
+def test_founder_emma_page_has_person_entity():
+    import json, re
+    html = read("founders/emma/index.html")
+    m = re.search(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
+    data = json.loads(m.group(1))
+    person = data["mainEntity"]
+    # Same @id as emmaleonhart.com so search engines see one entity.
+    assert person["@id"] == "https://emmaleonhart.com/#person"
+    assert person["name"] == "Emma Leonhart"
+    assert "https://www.wikidata.org/wiki/Q140568870" in person["sameAs"]
+
+
+def test_founder_emma_page_is_linked_published_and_in_sitemap():
+    assert 'href="/founders/emma/"' in read("index.html")
+    assert "cp founders/emma/index.html _site/founders/emma/" in read(".github/workflows/deploy.yml")
+    root = ET.fromstring(read("sitemap.xml"))
+    locs = [e.text for e in root.iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
+    assert "https://topazcomputing.com/founders/emma/" in locs
